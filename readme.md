@@ -1,4 +1,4 @@
-* INSTRUCTION 
+#INSTRUCTION 
 For server go to server directory and run  `npm install` then `npm start`
 for Client go to client directory and run `npm install` then `npm start`
 
