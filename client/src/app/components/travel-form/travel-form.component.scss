@@ -1,0 +1,42 @@
+form{
+    width: 31.25rem;
+    padding:0em 3em 1.5em 3em;
+    background: linear-gradient(to right, var(--primary-light-clr), rgb(235, 235, 235));
+    border-radius: 1rem;
+    box-shadow: 0 0 0.5rem rgba($color: var(--primary-dark-clr), $alpha: 0.5);
+}
+.row{
+    &__travel{
+        margin: 1em;
+        padding: 1em;
+        text-align: center;
+        border-radius:1rem;
+        background: rgba(128, 128, 128,0.2);
+        &__text{
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+    }
+}
+.button-submit{
+    border: none;
+    margin-top: 2em;
+    padding: 0.2em;
+    border-radius: 0.5rem;
+    color: var(--primary-light-clr);
+    background: var(--primary-clr);
+    transition: all 1sec ease;
+    cursor: pointer;
+    &:hover{
+        transform: scale(1.09);
+    }
+    &:disabled{
+        opacity: 0.6;
+    }
+}
+.message{
+    margin-top: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

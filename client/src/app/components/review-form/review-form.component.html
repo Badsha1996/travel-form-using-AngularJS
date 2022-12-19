@@ -1,0 +1,48 @@
+<div class="main-container">
+    <div class="row">
+        <div class="col row__review">
+            <span class="row__review__text">Review Page</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col row__name">
+            <label for="firstName" class="form-label"><b>First Name : </b> {{firstName}} </label>
+        </div>
+    </div>
+    <div class="row" *ngIf="middleName">
+        <div class="col row__name">
+            <label for="middleName" class="form-label"><b>Middle Name : </b> {{middleName}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col row__name">
+            <label for="lastName" class="form-label"><b> Last Name : </b>{{lastName}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="country" class="form-label"><b>Country : </b> {{country}}</label>
+              
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="email" class="form-label"> <b> Email : </b>{{email}}</label>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 offset-1">
+            <div class="d-grid">
+                <button routerLink="/travel-form" class="button-back">Go to back</button>
+            </div>
+            
+        </div>
+        <div class="col-4 offset-2">
+            <div class="d-grid">
+                <button (click)="handleConfirm()"   type="submit" class="button-submit" >Confirm</button>
+            </div>
+            
+        </div>
+    </div>
+</div>

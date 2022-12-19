@@ -1,0 +1,84 @@
+
+<form [formGroup]="travelForm" (ngSubmit)="handleSubmit()" class="border">
+    <div class="row">
+        <div class="col row__travel">
+            <span class="row__travel__text">Travel Form</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col row__name">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" formControlName="firstName">
+            <div class="form-text text-danger" 
+            *ngIf="FirstName.errors?.['required'] && (FirstName.touched || FirstName.dirty)">
+                This field is mandatory
+            </div>
+            <div class="form-text text-danger" 
+            *ngIf="FirstName.errors?.['minlength'] && (FirstName.touched || FirstName.dirty)">
+                Input is too short
+            </div>
+            <div class="form-text text-danger" 
+            *ngIf="FirstName.errors?.['pattern'] && (FirstName.touched || FirstName.dirty)">
+                Invalid Input
+            </div>
+        </div>
+        <div class="col row__name">
+            <label for="middleName" class="form-label">Middle Name</label>
+            <input type="text" class="form-control" id="middleName" formControlName="middleName">
+            <div class="form-text text-danger" 
+            *ngIf="MiddleName.errors?.['minlength']">
+                Input is too short
+            </div>
+            <div class="form-text text-danger" 
+            *ngIf="MiddleName.errors?.['pattern']">
+                Invalid Input
+            </div>
+        </div>
+        <div class="col row__name">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="country" class="form-label">Country</label>
+            <input type="text" class="form-control" id="country" formControlName="country"> 
+            <div class="form-text text-danger" 
+            *ngIf="Country.errors?.['required'] && (Country.touched || Country.dirty)">
+                This field is mandatory
+            </div>
+            <div class="form-text text-danger" 
+            *ngIf="Country.errors?.['minlength'] && (Country.touched || Country.dirty)">
+                Input is too short
+            </div>
+            <div class="form-text text-danger" 
+            *ngIf="Country.errors?.['pattern'] && (Country.touched || Country.dirty)">
+                Invalid Input
+            </div>   
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email"> 
+            <div class="form-text text-danger" 
+            *ngIf="Email.errors?.['required'] && (Email.touched || Email.dirty)">
+                Email is required
+            </div>  
+            <div class="form-text text-danger" 
+            *ngIf="Email.errors?.['email'] && (Email.touched || Email.dirty)">
+                Please enter a valid email
+            </div> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="d-grid">
+                <button (click)="handleSubmit" type="submit" class="button-submit" [disabled]="travelForm.invalid">Submit</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <p class="message">{{message}}</p>
+    </div>
+</form>
