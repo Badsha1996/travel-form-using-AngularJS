@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:"review-form", component : ReviewFormComponent},
   {path:"confirm-form",  component : ConfirmFormComponent},
   {path:"error", component: ErrorComponent},
-  {path:"**", component: GlobalErrorComponent}
+  {path:"**", component: TravelFormComponent}
 ];
 
 @NgModule({

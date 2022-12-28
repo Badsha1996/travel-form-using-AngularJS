@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GlobalErrorComponent } from './global-error.component';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('GlobalErrorComponent', () => {
   let component: GlobalErrorComponent;
@@ -20,4 +22,11 @@ describe('GlobalErrorComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call back button',() => {
+    let backButton: DebugElement = 
+    fixture.debugElement.query(By.css('button[type=submit]'));
+    fixture.detectChanges();
+    expect(component).toBeTruthy();
+});
 });

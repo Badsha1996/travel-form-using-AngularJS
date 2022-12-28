@@ -18,6 +18,22 @@ form{
         }
     }
 }
+.reset{
+    position: absolute;
+    top: 72%;
+    left: 50%;
+    border: 0.1rem solid var(--primary-clr);
+    margin-top: 2em;
+    padding: 0.2em 3em;
+    border-radius: 0.5rem;
+    background: transparent;
+    transition: all 1sec ease;
+    cursor: pointer;
+    &:hover{
+        transform: scale(1.09);
+    }
+    
+}
 .button-submit{
     border: none;
     margin-top: 2em;
