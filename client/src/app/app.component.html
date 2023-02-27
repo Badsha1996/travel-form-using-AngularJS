@@ -1,4 +1,17 @@
-<h1 class="text-center" style="color: lightgrey; background-color: rgba(24, 24, 24, 0.447);">{{title}}</h1>
+
+<div class="options" style="width: 10%;float: right;margin-top: 0.2rem;">
+  <span class="form-inline" >
+    <select class="form-control"
+    #selectedLang
+    (change)="switchLang(selectedLang.value)">
+    <option *ngFor="let language of translate.getLangs()"
+    [value]="language"
+    [selected]="language === translate.currentLang">
+  {{language}}</option>
+  </select>
+  </span>
+</div>
+<h1 class="text-center" style="color: lightgrey; background-color: rgba(24, 24, 24, 0.447);">{{'title'|translate }}</h1>
 <div class="container">
   <router-outlet></router-outlet>
 </div>

@@ -1,12 +1,12 @@
 <div class="main-container">
     <div class="row">
         <div class="col row__confirm">
-            <span class="row__confirm__text text-success"> Your response has been submitted !</span>
+            <span class="row__confirm__text text-success"> {{"successMessage"|translate}}</span>
         </div>
     </div>
     <div class="row">
         <div class="col ">
-            <button class="button-submit"  routerLink="/travel-form">Go to main page</button>
+            <button class="button-submit"  (click)="handleGoBack()">{{"goBack"|translate}}</button>
         </div>
     </div>
     

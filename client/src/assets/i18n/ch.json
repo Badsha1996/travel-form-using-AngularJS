@@ -1,0 +1,19 @@
+{
+    "title":"旅行形式",
+    "firstName":"名",
+    "lastName":"姓",
+    "middleName":"中间名字",
+    "country":"国家",
+    "email":"电子邮件",
+    "adhar":"身份证",
+    "passport":"护照",
+    "upload":"上传",
+    "submit":"提交",
+    "confirm":"确认",
+    "goBack":"回去",
+    "reviewForm":"审查表",
+    "confirmForm": "确认表格",
+    "error":"错误",
+    "errorMessage":"有问题",
+    "successMessage":"您的表格已提交"
+}

@@ -1,0 +1,19 @@
+{
+    "title":"Formulario de viaje",
+    "firstName":"Nombre de pila",
+    "lastName":"Apellido",
+    "middleName":"Segundo",
+    "country":"País",
+    "email":"Correo electrónico",
+    "adhar":"identificación",
+    "passport":"Pasaporte",
+    "upload":"Subir",
+    "submit":"Entregar",
+    "confirm":"Confirmar",
+    "goBack":"Regresa",
+    "reviewForm":"Formulario de revisión",
+    "confirmForm": "Confirmar página",
+    "error":"Error",
+    "errorMessage":"Algo salió mal",
+    "successMessage":"Su formulario ha sido enviado"
+}

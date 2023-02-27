@@ -8,7 +8,10 @@ router.post("/post", async (req, res) =>{
         middleName : req.body.middleName,
         lastName : req.body.lastName,
         country : req.body.country,
-        email : req.body.email
+        email : req.body.email,
+        adhar:req.body.adhar,
+        passport:req.body.passport,
+        
     });
     try{
         const user = await newUser.save();

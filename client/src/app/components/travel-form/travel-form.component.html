@@ -1,91 +1,115 @@
 
-<form [formGroup]="travelForm" (ngSubmit)="handleSubmit()" class="border">
+<form [formGroup]="travelForm" (ngSubmit)="handleSubmit($event)" class="border">
     <div class="row">
         <div class="col row__travel">
-            <span class="row__travel__text">Travel Form</span>
+            <span class="row__travel__text">{{"title" | translate}}</span>
         </div>
     </div>
     <div class="row">
         <div class="col row__name">
-            <label for="firstName" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="firstName" [(ngModel)]="fName" formControlName="firstName">
+            <label for="firstName" class="form-label">{{"firstName" | translate}}</label>
+            <input type="text" class="form-control" id="firstName" [value]="FirstName.value" formControlName="firstName">
+            <!-- try boolean approch  -->
             <div class="form-text text-danger" 
-            *ngIf="FirstName.errors?.['required'] && (FirstName.touched || FirstName.dirty)">
+            *ngIf="handleError('required','firstName')">
                 This field is mandatory
             </div>
             <div class="form-text text-danger" 
-            *ngIf="FirstName.errors?.['minlength'] && (FirstName.touched || FirstName.dirty)">
+            *ngIf="handleError('minlength','firstName')">
                 Input is too short
             </div>
             <div class="form-text text-danger" 
-            *ngIf="FirstName.errors?.['pattern'] && (FirstName.touched || FirstName.dirty)">
+            *ngIf="handleError('pattern','firstName')">
+                Invalid Input
+            </div>
+        </div>
+
+        <div class="col row__name">
+            <label for="middleName" class="form-label">{{"middleName" | translate}}</label>
+            <input type="text" class="form-control" id="middleName" [value]="MiddleName.value" formControlName="middleName">
+            <div class="form-text text-danger" 
+            *ngIf="handleError('minlength','middleName')">
+                Input is too short
+            </div>
+            <div class="form-text text-danger" 
+            *ngIf="handleError('pattern','middleName')">
                 Invalid Input
             </div>
         </div>
         <div class="col row__name">
-            <label for="middleName" class="form-label">Middle Name</label>
-            <input type="text" class="form-control" id="middleName" [(ngModel)]="mName" formControlName="middleName">
+            <label for="lastName" class="form-label">{{"lastName" | translate}}</label>
+            <input type="text" class="form-control" id="lastName" [value]="LastName.value" formControlName="lastName">
             <div class="form-text text-danger" 
-            *ngIf="MiddleName.errors?.['minlength']">
+            *ngIf="handleError('required','lastName')">
+                This field is mandatory
+            </div>
+            <div class="form-text text-danger" 
+            *ngIf="handleError('minlength','lastName')">
                 Input is too short
             </div>
             <div class="form-text text-danger" 
-            *ngIf="MiddleName.errors?.['pattern']">
+            *ngIf="handleError('pattern','lastName')">
                 Invalid Input
             </div>
-        </div>
-        <div class="col row__name">
-            <label for="lastName" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="lastName" [(ngModel)]="lName" formControlName="lastName">
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <label for="country" class="form-label">Country</label>
-            <input type="text" class="form-control" id="country" [(ngModel)]="country" formControlName="country"> 
+            <label for="country" class="form-label">{{"country" | translate}}</label>
+            <input type="text" class="form-control" id="country" [value]="Country.value" formControlName="country"> 
             <div class="form-text text-danger" 
-            *ngIf="Country.errors?.['required'] && (Country.touched || Country.dirty)">
+            *ngIf="handleError('required','country')">
                 This field is mandatory
             </div>
             <div class="form-text text-danger" 
-            *ngIf="Country.errors?.['minlength'] && (Country.touched || Country.dirty)">
+            *ngIf="handleError('minlength','country')">
                 Input is too short
             </div>
             <div class="form-text text-danger" 
-            *ngIf="Country.errors?.['pattern'] && (Country.touched || Country.dirty)">
+            *ngIf="handleError('pattern','country')">
                 Invalid Input
             </div>   
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" [(ngModel)]="email" formControlName="email"> 
+            <label for="email" class="form-label">{{"email" | translate}}</label>
+            <input type="email" class="form-control" id="email" [value]="Email.value" formControlName="email"> 
             <div class="form-text text-danger" 
-            *ngIf="Email.errors?.['required'] && (Email.touched || Email.dirty)">
+            *ngIf="handleError('required','email')">
                 Email is required
             </div>  
             <div class="form-text text-danger" 
-            *ngIf="Email.errors?.['email'] && (Email.touched || Email.dirty)">
+            *ngIf="handleError('email','email')">
                 Please enter a valid email
             </div> 
         </div>
     </div>
-    <div class="row">
-        <div class="col-4 offset-2">
+    
+<div class="row">
+    <div class="col">
+        <label for="adhar" class="form-label">{{"adhar" | translate}}</label>
+        <input type="file" (change)="onChange($event,'a')" class="" [title]=" "   id="adhar" > 
+        <p class="file-name">{{AdharCard?.name}}</p>
+         
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <label for="passport" class="form-label">{{"passport" | translate}}</label>
+        <input type="file" (change)="onChange($event,'p')" class="" [title]=" " id="passport"  > 
+        <p class="file-name">{{PassportCard?.name}}</p>
+    </div>
+</div>
+    
+    <div class="row" >
+        <div class="col-8 offset-2">
             <div class="d-grid">
-                <button (click)="handleSubmit" type="submit" class="button-submit" [disabled]="travelForm.invalid">Submit</button>
+                <button (click)="handleSubmit($event)" type="submit" class="button-submit" [disabled]="travelForm.invalid">{{"submit" | translate}}</button>
             </div>
         </div>
     </div>
-    <div class="row">
-        <p class="message">{{message}}</p>
-        
-    </div>
-</form>
-<div class="col-4 offset-1">
-    <div class="d-grid">
-        <button routerLink="/travel-form" class="reset">reset</button>
-    </div>
     
-</div>
+    
+</form>

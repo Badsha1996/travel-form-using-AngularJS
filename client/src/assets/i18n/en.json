@@ -1,0 +1,19 @@
+{
+    "title":"Travel Form",
+    "firstName":"First Name",
+    "lastName":"Last Name",
+    "middleName":"Middle Name",
+    "country":"Country",
+    "email":"Email",
+    "adhar":"Adhar Card",
+    "passport":"Passport",
+    "upload":"Upload",
+    "submit":"Submit",
+    "confirm":"confirm",
+    "goBack":"Go Back",
+    "reviewForm":"Review Form",
+    "confirmForm": "Confirm Page",
+    "error":"Error",
+    "errorMessage":"Something went Wrong",
+    "successMessage":"Your Form has been submited"
+}

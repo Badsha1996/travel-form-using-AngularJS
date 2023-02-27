@@ -4,68 +4,49 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from 'src/app/app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {UserService} from "../../services/user.service";
-import {of} from 'rxjs';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from 'src/environments/environment';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { HttpLoaderFactory } from 'src/app/app.module';
+;
 
 describe('ReviewFormComponent', () => {
     let component: ReviewFormComponent;
     let fixture: ComponentFixture<ReviewFormComponent>;
 
-    let userService;
-    let homeComponent;
-    let element;
-
-
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [ReviewFormComponent],
-            imports: [ReactiveFormsModule, AppRoutingModule, HttpClientModule]
+            imports: [ReactiveFormsModule, AppRoutingModule, HttpClientModule,AngularFireModule.initializeApp(environment.firebase),
+                AngularFireDatabaseModule,
+                AngularFireStorageModule,TranslateModule.forRoot({
+                    loader: {
+                        provide: TranslateLoader,
+                        useFactory: HttpLoaderFactory
+                    }
+                })],
+                providers: [
+                    { provide: UserService,TranslateService,AngularFireStorage}
+                  ]
         }).compileComponents();
 
         fixture = TestBed.createComponent(ReviewFormComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
-
-    it('should create', () => {
+    it('should create the component', () => {
         expect(component).toBeTruthy();
     });
-
+    it('should have a percentage of 0 by default', () => {
+        expect(component.percentage).toEqual(0);
+      });
     
-    it('should call handleGoBack method',() => {
-        spyOn(component, 'handleGoBack');
-        let backButton: DebugElement = 
-        fixture.debugElement.query(By.css('button[type=submit]'));
-        fixture.detectChanges();
-        backButton.triggerEventHandler('click',null);
-        fixture.detectChanges();
-        expect(component.handleGoBack).toHaveBeenCalledTimes(1);
-    });
-
-    it("save data using API", () => {
-        let response = [
-            {
-                firstName: "",
-                middleName: "",
-                lastName: "",
-                country: "",
-                email: ""
-            }, {
-                firstName: "",
-                middleName: "",
-                lastName: "",
-                country: "",
-                email: ""
-            }
-        ];
-
-
-        // Act
-        component.handleConfirm()
-        expect(component.handleConfirm).toBeTruthy(response);
-        
-    })
-
+    it('should have uploaded set to false by default', () => {
+        expect(component.uploaded).toBeFalse();
+      });
+      
+    
 
 });

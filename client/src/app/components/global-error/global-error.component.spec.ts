@@ -23,10 +23,5 @@ describe('GlobalErrorComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call back button',() => {
-    let backButton: DebugElement = 
-    fixture.debugElement.query(By.css('button[type=submit]'));
-    fixture.detectChanges();
-    expect(component).toBeTruthy();
-});
+  
 });

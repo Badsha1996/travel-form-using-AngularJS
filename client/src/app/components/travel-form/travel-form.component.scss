@@ -18,21 +18,11 @@ form{
         }
     }
 }
-.reset{
-    position: absolute;
-    top: 72%;
-    left: 50%;
-    border: 0.1rem solid var(--primary-clr);
-    margin-top: 2em;
-    padding: 0.2em 3em;
-    border-radius: 0.5rem;
-    background: transparent;
-    transition: all 1sec ease;
-    cursor: pointer;
-    &:hover{
-        transform: scale(1.09);
-    }
-    
+
+.btn-download{
+    float: right;
+    margin: 0.5em;
+    padding: 0.09em;
 }
 .button-submit{
     border: none;
@@ -50,6 +40,22 @@ form{
         opacity: 0.6;
     }
 }
+.button-upload{
+    position: absolute;
+    top: 38.1rem;
+    left: 52%;
+    border: none;
+    padding: 0.2em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-radius: 0.5rem;
+    color: var(--primary-light-clr);
+    background: var(--primary-clr);
+    
+}
+input[type='file'] {
+    color: transparent;
+  }
 .message{
     margin-top: 0.5em;
     display: flex;

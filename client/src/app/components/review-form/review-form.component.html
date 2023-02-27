@@ -1,48 +1,73 @@
 <div class="main-container">
     <div class="row">
         <div class="col row__review">
-            <span class="row__review__text">Review Page</span>
+            <span class="row__review__text">{{"reviewForm" | translate}}</span>
         </div>
     </div>
     <div class="row">
         <div class="col row__name">
-            <label for="firstName" class="form-label"><b>First Name : </b> {{firstName}} </label>
+            <label for="firstName" class="form-label"><b>{{"firstName" | translate}} : </b> {{this.userService.getValue()[0]}} </label>
         </div>
     </div>
-    <div class="row" *ngIf="middleName">
+    <div class="row" *ngIf="this.userService.getValue()[1]">
         <div class="col row__name">
-            <label for="middleName" class="form-label"><b>Middle Name : </b> {{middleName}}</label>
+            <label for="middleName" class="form-label"><b>{{"middleName" | translate}} : </b> {{this.userService.getValue()[1]}}</label>
         </div>
     </div>
     <div class="row">
         <div class="col row__name">
-            <label for="lastName" class="form-label"><b> Last Name : </b>{{lastName}}</label>
+            <label for="lastName" class="form-label"><b>{{"lastName" | translate}} : </b>{{this.userService.getValue()[2]}}</label>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <label for="country" class="form-label"><b>Country : </b> {{country}}</label>
+            <label for="country" class="form-label"><b>{{"country" | translate}} : </b> {{this.userService.getValue()[3]}}</label>
               
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <label for="email" class="form-label"> <b> Email : </b>{{email}}</label>
+            <label for="email" class="form-label"> <b> {{"email" | translate}} : </b>{{this.userService.getValue()[4]}}</label>
             
         </div>
     </div>
     <div class="row">
-        <div class="col-4 offset-1">
+        <div class="col">
+            <label for="adhar" class="form-label"> <b> {{"adhar" | translate}} : </b><a href=`#` (click)="downloadFile($event,'a')">{{this.userService.getValue()[5]?.name}}</a></label>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="passport" class="form-label"> <b> {{"passport" | translate}} : </b><a href=`#` (click)="downloadFile($event,'p')">{{this.userService.getValue()[6]?.name}}</a></label>  
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 offset-1" *ngIf="!uploaded">
             <div class="d-grid">
-                <button (click)="handleGoBack()" type="submit" class="button-back">Go Back</button>
+                <button (click)="handleGoBack()" type="submit" class="button-back">{{"goBack" | translate}}</button>
             </div>
             
         </div>
-        <div class="col-4 offset-2">
+    
+        <div class="col-4 offset-2" *ngIf="!uploaded">
             <div class="d-grid">
-                <button (click)="handleConfirm()"   type="submit" class="button-submit" >Confirm</button>
+                <button (click)="handleUpload($event)" class="button-submit" >{{"upload" | translate}}</button>
+            </div>
+        </div>
+    
+        <div class="col-8 offset-2" *ngIf="uploaded">
+            <div class="d-grid">
+                <button (click)="handleConfirm()"   type="submit" class="button-submit" >{{"confirm" | translate}}</button>
             </div>
             
         </div>
+    </div>
+    <div class="row">
+        <div *ngIf="AdharCard||PassportCard" class="progress mt-2">
+            <div class="progress-bar progress-bar-info" role="progressbar" attr.aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: percentage + '%' }">
+            {{ percentage }}%</div>
+        </div>
+            
     </div>
 </div>

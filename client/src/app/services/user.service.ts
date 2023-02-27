@@ -5,19 +5,45 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-
-  constructor(private http : HttpClient) { }
-
   baseServerUrl = "http://localhost:8800/api/travelForm/post"
-  saveUser(user:Array<String>){
-    // observable 
+  firstName : string =""
+  middleName : string =""
+  lastName : string =""
+  country : string =""
+  email : string=""
+  adhar:any
+  passport:any
+
+  constructor(private http : HttpClient) { 
+  }
+   
+ // SENDING VALUES
+  sendValue(fname: string, mname: string, lname: string, country: string, email: string,aFile:any,pFile:any) {
+    this.firstName = fname
+    this.middleName = mname
+    this.lastName  = lname
+    this.country = country
+    this.email = email
+    this.adhar = aFile
+    this.passport = pFile
+  }
+
+  getValue(){
+    return [this.firstName, this.middleName, this.lastName, this.country, this.email,this.adhar,this.passport]
+  }
+
+
+  
+  saveUser(user:FormData){
     return  this.http.post(this.baseServerUrl, 
       {
-        firstName: user[0],
-        middleName : user[1],
-        lastName : user[2],
-        country: user[3],
-        email : user[4]
+        firstName: user.get("firstName"),
+        middleName : user.get("middleName"),
+        lastName : user.get("lastName"),
+        country: user.get("country"),
+        email : user.get("email"),
+        adhar:user.get("adhar"),
+        passport:user.get("passport")
       }, {responseType:"json" });
     
   }
